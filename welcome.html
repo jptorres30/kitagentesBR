@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agente Automático BR — Bem-vindo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0d0d;--bg2:#111114;--bg3:#16161a;
+  --border:#2a2a35;--border-active:#8b5cf6;
+  --purple:#8b5cf6;--purple2:#6d28d9;--purple-dim:#4c1d95;
+  --text:#d4d0e8;--muted:#6b677f;--green:#3ddc84;--red:#ff4d4d;
+  --gold:#f59e0b;
+  --mono:'Share Tech Mono',monospace;
+  --sans:'Barlow',sans-serif;
+  --cond:'Barlow Condensed',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.6;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");opacity:.4;pointer-events:none;z-index:0}
+
+/* ── HERO ── */
+.hero{position:relative;z-index:10;padding:60px 24px 50px;text-align:center;border-bottom:1px solid var(--border)}
+.hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:200px;height:1px;background:var(--purple);opacity:.5}
+.hero-eyebrow{font-family:var(--mono);font-size:11px;color:var(--purple);letter-spacing:3px;text-transform:uppercase;margin-bottom:18px}
+.hero-tag{display:inline-block;font-family:var(--mono);font-size:10px;color:var(--green);background:rgba(61,220,132,.08);border:1px solid rgba(61,220,132,.2);border-radius:3px;padding:3px 10px;letter-spacing:2px;margin-bottom:20px}
+.hero-title{font-family:var(--cond);font-size:clamp(36px,7vw,64px);font-weight:800;color:#fff;letter-spacing:-.5px;line-height:1;margin-bottom:8px}
+.hero-title span{color:var(--purple)}
+.hero-name{font-family:var(--mono);font-size:13px;color:var(--muted);margin-bottom:24px;letter-spacing:.5px}
+.hero-name strong{color:var(--purple)}
+.hero-desc{font-size:16px;color:var(--text);max-width:520px;margin:0 auto 30px;line-height:1.7}
+.hero-desc strong{color:#fff}
+
+/* ── URGENCY BAR ── */
+.urgency-bar{background:rgba(139,92,246,.06);border:1px solid rgba(139,92,246,.2);border-radius:6px;padding:14px 20px;max-width:580px;margin:0 auto 32px;display:flex;align-items:center;gap:12px}
+.urgency-dot{width:8px;height:8px;min-width:8px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 1.5s ease infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.85)}}
+.urgency-text{font-family:var(--mono);font-size:12px;color:var(--text);letter-spacing:.3px}
+.urgency-text strong{color:var(--green)}
+
+/* ── MAIN ── */
+.main{max-width:800px;margin:0 auto;padding:48px 20px 100px;position:relative;z-index:1}
+
+/* ── SECTION HEADER ── */
+.section-label{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:3px;text-transform:uppercase;margin-bottom:6px}
+.section-title{font-family:var(--cond);font-size:26px;font-weight:800;color:#fff;letter-spacing:-.2px;margin-bottom:20px}
+
+/* ── MESSAGE CARD ── */
+.message-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:28px 28px 24px;margin-bottom:32px;position:relative;overflow:hidden}
+.message-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--purple)}
+.message-card p{font-size:15px;color:var(--text);line-height:1.8;margin-bottom:14px}
+.message-card p:last-child{margin-bottom:0}
+.message-card strong{color:#fff}
+.message-card .signature{font-family:var(--mono);font-size:12px;color:var(--purple);margin-top:18px;padding-top:14px;border-top:1px solid var(--border)}
+
+/* ── ALERT CARDS ── */
+.alerts{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
+.alert{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:18px 20px;display:flex;gap:16px;align-items:flex-start;transition:border-color .2s}
+.alert:hover{border-color:rgba(139,92,246,.3)}
+.alert-icon{font-size:20px;min-width:28px;margin-top:1px}
+.alert-content{}
+.alert-title{font-family:var(--cond);font-size:15px;font-weight:700;color:#fff;letter-spacing:.2px;margin-bottom:4px}
+.alert-text{font-size:13px;color:var(--muted);line-height:1.65}
+.alert-text strong{color:var(--text)}
+.alert-text a{color:var(--purple);text-decoration:none}
+.alert-text a:hover{text-decoration:underline}
+.alert.green{border-left:3px solid var(--green)}
+.alert.purple{border-left:3px solid var(--purple)}
+.alert.gold{border-left:3px solid var(--gold)}
+.alert.red{border-left:3px solid rgba(139,92,246,.6)}
+
+/* ── FOMO BLOCK ── */
+.fomo-block{background:rgba(139,92,246,.05);border:1px solid rgba(139,92,246,.2);border-radius:8px;padding:24px 24px 20px;margin-bottom:32px;text-align:center}
+.fomo-block .fomo-title{font-family:var(--cond);font-size:20px;font-weight:800;color:#fff;margin-bottom:10px}
+.fomo-block .fomo-text{font-size:14px;color:var(--muted);line-height:1.7;max-width:480px;margin:0 auto}
+.fomo-block .fomo-text strong{color:var(--purple)}
+
+/* ── STATS ROW ── */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:32px}
+.stat{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:16px 12px;text-align:center}
+.stat-val{font-family:var(--cond);font-size:28px;font-weight:800;color:var(--purple);line-height:1}
+.stat-label{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:1px;margin-top:4px;text-transform:uppercase}
+
+/* ── CTA SECTION ── */
+.cta-section{background:var(--bg2);border:1px solid rgba(139,92,246,.3);border-radius:10px;padding:36px 28px;text-align:center;margin-top:40px;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--purple),transparent)}
+.cta-eyebrow{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:3px;text-transform:uppercase;margin-bottom:14px}
+.cta-title{font-family:var(--cond);font-size:clamp(22px,4vw,32px);font-weight:800;color:#fff;line-height:1.15;margin-bottom:10px}
+.cta-sub{font-size:13px;color:var(--muted);margin-bottom:28px;max-width:400px;margin-left:auto;margin-right:auto;line-height:1.6}
+.cta-sub strong{color:var(--text)}
+.btn-main{display:inline-block;background:var(--purple);color:#fff;font-family:var(--cond);font-size:18px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:18px 48px;border-radius:6px;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .1s,box-shadow .2s;box-shadow:0 0 0 0 rgba(139,92,246,.4)}
+.btn-main:hover{background:#7c3aed;transform:translateY(-1px);box-shadow:0 8px 30px rgba(139,92,246,.35)}
+.btn-main:active{transform:translateY(0)}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(139,92,246,.4)}50%{box-shadow:0 0 0 8px rgba(139,92,246,0)}}
+@keyframes blink{0%,100%{opacity:.8}50%{opacity:0}}
+.btn-main{animation:glow 2.5s ease infinite}
+.btn-warn{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:14px;letter-spacing:.3px}
+.btn-warn strong{color:var(--text)}
+
+/* ── FOOTER ── */
+.footer{text-align:center;padding:28px 20px;border-top:1px solid var(--border);font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.5px;position:relative;z-index:1}
+.footer span{color:var(--purple)}
+
+@media(max-width:600px){
+  .stats{grid-template-columns:repeat(3,1fr)}
+  .urgency-bar{flex-direction:column;text-align:center;gap:8px}
+  .btn-main{width:100%;padding:18px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">✓ PAGAMENTO CONFIRMADO — ACESSO LIBERADO</div>
+  <div class="hero-eyebrow">Agente Automático BR</div>
+  <h1 class="hero-title">Bem-vindo ao<br><span>sistema.</span></h1>
+  <p class="hero-name">por <strong>João Torres</strong></p>
+  <p class="hero-desc">
+    Você acabou de entrar para um grupo <strong>seleto de pessoas</strong> que entenderam antes dos outros onde o mercado digital está indo. Isso não é exagero. É o que os dados mostram.
+  </p>
+  <div class="urgency-bar">
+    <div class="urgency-dot"></div>
+    <div class="urgency-text"><strong>Leia essa página inteira antes de avançar.</strong> Tem informações críticas que vão determinar seu resultado.</div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- MENSAGEM PESSOAL -->
+  <div class="section-label">// mensagem do criador</div>
+  <div class="section-title">Uma palavra antes de começar</div>
+
+  <div class="message-card">
+    <p>
+      Você tomou uma decisão que a maioria das pessoas vai tomar tarde demais. Enquanto o mercado ainda está debatendo se IA vai mudar alguma coisa, você já está com o sistema na mão — configurado, documentado e pronto pra rodar.
+    </p>
+    <p>
+      Esse agente não é mais uma ferramenta. É um processo automatizado que faz o trabalho que antes tomava dias — mineração, copy, página, entregável — em menos de 40 minutos. Sem você precisar ficar na frente do computador fazendo tudo na mão.
+    </p>
+    <p>
+      <strong>A única coisa que separa você do primeiro resultado é seguir o passo a passo na ordem correta.</strong> Não pule etapas. Não improvise. O sistema foi montado pra funcionar em sequência. Quem respeita a ordem, vê o agente rodar na primeira tentativa.
+    </p>
+    <p>
+      Agora vai. O passo a passo está te esperando.
+    </p>
+    <div class="signature">> João Torres<span style="display:inline-block;width:8px;height:12px;background:var(--purple);margin-left:3px;animation:blink 1s step-end infinite;vertical-align:middle"></span></div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-val">40<span style="font-size:16px">min</span></div>
+      <div class="stat-label">por produto</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">4</div>
+      <div class="stat-label">agentes ativos</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">18</div>
+      <div class="stat-label">queries mineradas</div>
+    </div>
+  </div>
+
+  <!-- FOMO -->
+  <div class="fomo-block">
+    <div class="fomo-title">Você está à frente.</div>
+    <div class="fomo-text">
+      A maioria dos produtores digitais ainda cria produto na mão — prompta uma ferramenta por vez, abre dez abas, perde dias no processo. <strong>Você acabou de automatizar tudo isso.</strong> Esse gap só vai crescer. Quanto mais cedo você rodar o sistema, mais distante você fica da concorrência.
+    </div>
+  </div>
+
+  <!-- ALERTAS -->
+  <div class="section-label">// antes de avançar</div>
+  <div class="section-title">Leia com atenção</div>
+
+  <div class="alerts">
+
+    <div class="alert green">
+      <div class="alert-icon">⚡</div>
+      <div class="alert-content">
+        <div class="alert-title">Siga a ordem. Sem exceção.</div>
+        <div class="alert-text">O passo a passo foi montado em sequência lógica. Cada fase desbloqueia a próxima. <strong>Pular etapas gera erro</strong> — e o erro vai parecer que o sistema não funciona, quando na verdade é só ordem errada. Respeite a sequência e o agente roda na primeira tentativa.</div>
+      </div>
+    </div>
+
+    <div class="alert purple">
+      <div class="alert-icon">🔧</div>
+      <div class="alert-content">
+        <div class="alert-title">Boas práticas: faça as instalações primeiro</div>
+        <div class="alert-text">Antes de qualquer coisa, complete as instalações básicas — <strong>Google Antigravity, Node.js, Claude Code e Python</strong>. São os alicerces do sistema. Com tudo instalado, o agente sobe sem fricção. Depois das instalações, recomendo deixar o ambiente rodando por <strong>3 a 5 dias</strong> antes de operar em produção — isso garante estabilidade e calibragem ideal do sistema.</div>
+      </div>
+    </div>
+
+    <div class="alert gold">
+      <div class="alert-icon">🔄</div>
+      <div class="alert-content">
+        <div class="alert-title">Atualizações contínuas inclusas</div>
+        <div class="alert-text">O Agente Automático BR está em evolução constante. <strong>Toda atualização do sistema chega pra você sem custo adicional.</strong> Novas queries no minerador, novos agentes, melhorias de performance — tudo incluso no seu acesso. Fique atento aos avisos de atualização.</div>
+      </div>
+    </div>
+
+    <div class="alert red">
+      <div class="alert-icon">💬</div>
+      <div class="alert-content">
+        <div class="alert-title">Dúvidas? Suporte disponível</div>
+        <div class="alert-text">Se travar em qualquer etapa, não fica tentando resolver sozinho por horas. <strong>O suporte está disponível direto no passo a passo</strong> — há um botão de contato via WhatsApp no onboarding. Use. Foi feito pra isso.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CTA FINAL -->
+  <div class="cta-section">
+    <div class="cta-eyebrow">// próximo passo</div>
+    <h2 class="cta-title">O passo a passo completo<br>está te esperando.</h2>
+    <p class="cta-sub">
+      <strong>Siga 100% da ordem sem pular nenhuma etapa.</strong><br>
+      Cada passo foi pensado pra te levar do zero ao agente rodando sem erro.
+    </p>
+    <a href="https://onboarding-kitagente.vercel.app" class="btn-main">
+      ACESSAR O PASSO A PASSO →
+    </a>
+    <p class="btn-warn">⚠ Cumpra <strong>todas as etapas na ordem</strong> — não pule nenhuma.</p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <span>AGENTE AUTOMÁTICO BR</span> · por João Torres · todos os direitos reservados
+</div>
+
+</body>
+</html>
